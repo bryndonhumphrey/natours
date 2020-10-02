@@ -1,0 +1,68 @@
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /*stops shakyness from animation. determines if back part of an element is visible or hidden when we transoform it*/
+  margin-bottom: 6rem; /*spacing between h1 and button*/
+
+  &--main {
+    display: block; /*spans are typically inline elements, by changing this to block the span will now take up the entire width of the element it is in*/
+    font-size: 6rem;
+    font-weight: 400; /*by default h1 has higher font weight*/
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft; /*for animation to work you only need two properties, animation-name which is the name of the keyframe we made & animation-duration*/
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /*
+      other cool animation properties
+      animation-iteration-count: 3;
+      animation-delay: 3s;
+      */
+  }
+
+  &--sub {
+    display: block; /*spans are typically inline elements, by changing this to block the span will now take up the entire width of the element it is in*/
+    font-size: 2rem;
+    font-weight: 700; /*by default h1 has higher font weight*/
+    letter-spacing: 1.75rem;
+
+    animation: moveInRight 1s ease-out;
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block; //this will no longer take up the entire screen & will make the gradient clipping better
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text; //background gets clipped exactly where the text is
+  color: transparent; //required to see linear gradient behind it
+  letter-spacing: 0.2rem;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.2);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
+}
+
+.heading-terciary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}

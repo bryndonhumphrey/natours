@@ -1,0 +1,27 @@
+//COLORS
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
+//FONT
+$default-font-size: 1.6rem;
+
+// GRID
+$grid-width: 114rem; //1140px is a standard max width for a row taking up the entire screen width, so with rems as units of 10px, 1140/10px = 114
+$gutter-vertical: 8rem; //equivilent to 80px/10px(1 rem of 10px) for 8 rem. this is space inbetween rows
+$gutter-horizontal: 6rem; //equivilent to 60px/10px(1 rem of 10px) for 8 rem. this is spaces in between colomns
+
+//CARD
+$card-height: 52rem;

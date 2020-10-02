@@ -1,0 +1,66 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: 0.3rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+  backface-visibility: hidden;
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(
+      50% at 50% 50%
+    ); //in order to use shape outside the object needs to be floated as well as have a height and width
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%); //acgtually clips the circle shape
+    transform: translateX(-3rem) skewX(12deg); //best way to move an object taht has been altered
+    position: relative;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  &__img {
+    height: 100%; //able to do this because it's inside of a shape that has had width/height defined
+    transform: translateX(-4rem) scale(1.3);
+    backface-visibility: hidden;
+    transition: all 0.5s ease;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+    backface-visibility: hidden;
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+    backface-visibility: hidden; //fixes glitchyness in animation
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    backface-visibility: hidden;
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    backface-visibility: hidden;
+    filter: blur(0.3rem) brightness(80%);
+  }
+}

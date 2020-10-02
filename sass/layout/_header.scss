@@ -1,0 +1,46 @@
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg); /*this goes in order, whichever you want on top goes first. make srue to set opacity on top backgrounds. you can also put multiple properties on linear-gradient such a right and bottom to make it go diagonal*/
+  background-size: cover; /*cover will always use the viewport width to size width*/
+  background-position: top; /*makes sure image will always stay at the top of the container*/
+  position: relative;
+
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 80%,
+    0 100%
+  ); //to make it work for multiple browsers
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 80%,
+    0 100%
+  ); /*this is to create polygone view over background image, coordinates go from top left of page, going to each corner of the polygon in a clockwise direction*/
+
+  &__logo-box {
+    position: absolute; /*this gets it's location from the partent element, which im this case is .header*/
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem; /*width is autocalculated by browser*/
+  }
+
+  &__text-box {
+    position: absolute; /*keeps centered in middle the entire time*/
+    top: 50%; /*Top and bottom made this start exactly in the middle of the page where we went it*/
+    left: 50%;
+    transform: translate(
+      -40%,
+      -50%
+    ); /*this conbination of transofrm/translate offsets the box so it's center will be in the middle where top/bottom 50% put it*/
+    text-align: center; /*since inline-block elements are treated liek text, this will allow us to easily center the button*/
+  }
+}

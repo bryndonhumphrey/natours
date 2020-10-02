@@ -1,0 +1,97 @@
+/*link is a pseudo class, there are other psudoclasses as well - like visited*/
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none; /*removes typical anchor tag link decoration*/
+    padding: 1.5rem 4rem;
+    display: inline-block; /*inline block is good to use whenever you wantto add padding/height/width to an element*/
+    border-radius: 10rem;
+    transition: all 0.2s; /*this allows the hover and active to be animated when compared to the initial state, i/e not jumpy and smoothly going up/down*/
+    position: relative; /*needed for the after pseudo element to reference*/
+    font-size: $default-font-size; /*added after adjusting everything to rem since ut wasn't inherited from body anymore*/
+  }
+
+  &:hover {
+    transform: translateY(
+      -0.3rem
+    ); /*this will move up since Y moves from top to bottom in CSS*/
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; /*this will fade the element out*/
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    /*setting the color of the after pseudo element here to follow our code convention above where color is not included so we can easily change color with a class*/
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    /*setting the color of the after pseudo element here to follow our code convention above where color is not included so we can easily change color with a class*/
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  /*this after psudo element is what is needed to give the button the expanding then disappearing effect after whatever effect we want. in this case we also need btn:hover::after to complete the transition since we are doing the transition after hovering .note the two colons*/
+  &::after {
+    content: ""; /*this needs to be specified, even if it's empty, otherwise it will not appear */
+    display: inline-block; /*this property needs to be specified as well. you typically want it to match whatever element you're emulating*/
+    height: 100%; /*this works because the after pseudo element is trated like a child of the initial element*/
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute; /*this is to make it go exactly behind the element we are emulating. this will only work if the position property has been set to relative of the element that's being emulated*/
+    top: 0; /*this is to make it go exactly behind the element we are emulating. this will only work if the position property has been set to relative of the element that's being emulated*/
+    left: 0; /*this is to make it go exactly behind the element we are emulating. this will only work if the position property has been set to relative of the element that's being emulated*/
+    z-index: -1; /*needs to be set to a negative number so it will show up behind the element being emulated & not in front*/
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; /*automatically applies styles 0% before animation starts so the button isn't on page before the animation*/
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block; //so we can  use box model properties on this, like padding & margin
+    text-decoration: none; //gets rid of default link formatting (underline)
+    border-bottom: 0.1rem solid $color-primary; //creates underline
+    padding: 0.3rem;
+    transition: all 0.2s; /*this allows the hover and active to be animated when compared to the initial state, i/e not jumpy and smoothly going up/down*/
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    transform: translateY(
+      -0.2rem
+    ); /*this will move up since Y moves from top to bottom in CSS*/
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+}

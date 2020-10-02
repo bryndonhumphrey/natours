@@ -1,0 +1,7 @@
+@mixin clearfix {
+  &::after {
+    content: ""; //always needs to be specified of else a psudo element will not appear on the page
+    display: table; //standard for clearfix is to use display table
+    clear: both; //this actual performs the clearfix, it clears both the flaot left and the float right
+  }
+}

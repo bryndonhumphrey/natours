@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*will force inheritance of box-sizing: border-box; from the body. good when you want to change the box sizing for plugins and other components where you want to inherit another property for box sizing*/
+}
+
+/*used to change the root font size for rem measurments, for easier transition from web to mobile. Changed to 10 to make our life easier with calculation since we know the root font size is exactly 10*/
+html {
+  font-size: 62.5%; /*this is a % so the browser will calculate the default font size, which is helpful if the user has pre-set larger font sizes due to bad vision. we did 62.5 since we based out rems on a pixel size of 10 and 10(our size)/16(browser size) is 62.5%*/
+}
+
+/*font is here instead of universal selector because properies related to font are given by inheritance, so having them on the parent body element will ensure it gets passed down to all the children*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*font-size: 16px; removed after using rem*/
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem; /*white padding aroudn entire webpage*/
+
+  box-sizing: border-box; /*changes the box models so that the border and the paddings are no longer added to the total width/height that we specify for the box*/
+}

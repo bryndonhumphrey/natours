@@ -1,0 +1,39 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%; //since we are working with images we want all widths to be in %'s
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 0.2rem;
+    position: absolute; //this will be set absolutly to the first parent element that it encounters which has it's position set to something
+    z-index: 10;
+    transition: all 0.2s;
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+
+    &--p3 {
+      left: 20%; //since we are working with images we want all widths to be in %'s
+      top: 10rem;
+    }
+
+    &:hover {
+      outline: 1.5rem solid $color-primary; //with out we are able to use outline offset to create space between the images and the outline, which we cannot do with just the border property
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      z-index: 20;
+      outline-offset: 2rem;
+    }
+  }
+
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}
